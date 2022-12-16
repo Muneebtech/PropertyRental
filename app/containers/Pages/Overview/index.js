@@ -11,20 +11,20 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Tab, Tabs, Typography } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
 import Paper from '@material-ui/core/Paper';
+import PaperChartLineSimple from 'components/PaperChartLineSimple';
+import { makeSelectPropertyLocation } from 'containers/Pages/FixAndFlip/selectors';
+import PaperChartLine from 'components/PaperChartLine';
+import PaperChartLineComplex from 'components/PaperChartLineComplex';
+import PaperChartBar from 'components/PaperChartBar';
+import Map from 'containers/Map';
+import PaperChartPie from 'components/PaperChartPie';
 import reducer from './reducer';
-import PaperChartLine from '../../../components/PaperChartLine';
-import PaperChartLineComplex from '../../../components/PaperChartLineComplex';
-import PaperChartBar from '../../../components/PaperChartBar';
-import PaperMap from '../../../components/PaperMap';
-import PaperChartPie from '../../../components/PaperChartPie';
 import { getChartsByLocation } from './actions';
 import {
   makeSelectCharts,
   makeSelectCustomCharts,
   makeSelectIsGettingCharts,
 } from './selectors';
-import PaperChartLineSimple from '../../../components/PaperChartLineSimple';
-import { makeSelectLocation, makeSelectTypology } from '../Analysis/selectors';
 import messages from './messages';
 
 const useStyles = makeStyles(theme => ({
@@ -172,11 +172,7 @@ export function Overview(props) {
           {array.map(index => (
             <Grid item className={classes.gridPaper} xs={xs} key={index}>
               <Paper className={classes.height}>
-                <Skeleton
-                  variant="rect"
-                  animation="wave"
-                  className={classes.height}
-                />
+                <Skeleton animation="wave" className={classes.height} />
               </Paper>
             </Grid>
           ))}
@@ -185,7 +181,7 @@ export function Overview(props) {
     }
     return (
       <Grid item className={classes.gridPaper} xs={xs}>
-        <Skeleton variant="rect" animation="wave" className={classes.height} />
+        <Skeleton animation="wave" className={classes.height} />
       </Grid>
     );
   }
@@ -326,7 +322,7 @@ export function Overview(props) {
             </Grid>
           </Grid>
           <Grid key="third-row-map" item xs={6} className={classes.gridMap}>
-            <PaperMap />
+            <Map />
           </Grid>
         </Grid>
         <Grid key="fourth-row" item container spacing={2} direction="row">
@@ -373,8 +369,7 @@ export function Overview(props) {
 }
 
 const mapStateToProps = createStructuredSelector({
-  typology: makeSelectTypology(),
-  location: makeSelectLocation(),
+  location: makeSelectPropertyLocation(),
   charts: makeSelectCharts(),
   isGettingCharts: makeSelectIsGettingCharts(),
   customCharts: makeSelectCustomCharts(),

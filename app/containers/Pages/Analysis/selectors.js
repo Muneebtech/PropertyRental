@@ -1,42 +1,119 @@
 import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 
-const selectAnalysisDomain = state => state.analysis || initialState;
+const selectAnalysisReducerDomain = state => state.analysis || initialState;
 
-const makeSelectAnalysis = () =>
+const makeSelectAnalysisReducer = () =>
   createSelector(
-    selectAnalysisDomain,
+    selectAnalysisReducerDomain,
     substate => substate.analysis,
   );
 
-const makeSelectLocation = () =>
+const makeSelectPropertyTypes = () =>
   createSelector(
-    selectAnalysisDomain,
-    substate => substate.location,
+    selectAnalysisReducerDomain,
+    substate => substate.propertyTypes,
   );
 
-const makeSelectLocations = () =>
+const makeSelectPropertyTypologies = () =>
   createSelector(
-    selectAnalysisDomain,
-    substate => substate.locations,
+    selectAnalysisReducerDomain,
+    substate => substate.propertyTypologies,
   );
 
-const makeSelectTypology = () =>
+const makeSelectPropertyConditions = () =>
   createSelector(
-    selectAnalysisDomain,
-    substate => substate.typology,
+    selectAnalysisReducerDomain,
+    substate => substate.propertyConditions,
   );
 
-const makeSelectTypologies = () =>
+const makeSelectAcquisitionTypes = () =>
   createSelector(
-    selectAnalysisDomain,
-    substate => substate.typologies,
+    selectAnalysisReducerDomain,
+    substate => substate.acquisitionTypes,
+  );
+
+const makeSelectIrsCategories = () =>
+  createSelector(
+    selectAnalysisReducerDomain,
+    substate => substate.irsCategories,
+  );
+
+const makeSelectIrsCategoryRegions = () =>
+  createSelector(
+    selectAnalysisReducerDomain,
+    substate => substate.irsCategoryRegions,
+  );
+
+const makeSelectIrsDependentsList = () =>
+  createSelector(
+    selectAnalysisReducerDomain,
+    substate => substate.irsDependentsList,
+  );
+
+const makeSelectCIPs = () =>
+  createSelector(
+    selectAnalysisReducerDomain,
+    substate => substate.percentiles,
+  );
+
+const makeSelectInputs = () =>
+  createSelector(
+    selectAnalysisReducerDomain,
+    substate => substate.inputs,
+  );
+
+const makeSelectErrors = () =>
+  createSelector(
+    selectAnalysisReducerDomain,
+    substate => substate.errors,
+  );
+
+const makeSelectAnalysisData = () =>
+  createSelector(
+    selectAnalysisReducerDomain,
+    substate => substate.data,
+  );
+
+const makeSelectIsGettingAnalysisById = () =>
+  createSelector(
+    selectAnalysisReducerDomain,
+    substate => substate.isGettingAnalysisById,
+  );
+
+const makeSelectIsGettingPropertyAnalysisById = () =>
+  createSelector(
+    selectAnalysisReducerDomain,
+    substate => substate.isGettingPropertyAnalysisById,
+  );
+
+const makeSelectAnalyzeButtonDisabled = () =>
+  createSelector(
+    selectAnalysisReducerDomain,
+    substate => substate.analyzeButtonDisabled,
+  );
+
+const makeSelectNewPropertyAnalysisPageReady = () =>
+  createSelector(
+    selectAnalysisReducerDomain,
+    substate => substate.newPropertyAnalysisPageReady,
   );
 
 export {
-  makeSelectAnalysis,
-  makeSelectLocation,
-  makeSelectLocations,
-  makeSelectTypology,
-  makeSelectTypologies,
+  makeSelectAnalysisReducer,
+  makeSelectAnalysisData,
+  makeSelectPropertyTypes,
+  makeSelectPropertyTypologies,
+  makeSelectPropertyConditions,
+  makeSelectAcquisitionTypes,
+  makeSelectIrsCategories,
+  makeSelectIrsCategoryRegions,
+  makeSelectIrsDependentsList,
+  makeSelectInputs,
+  makeSelectErrors,
+  makeSelectCIPs,
+  makeSelectIsGettingPropertyAnalysisById,
+  makeSelectIsGettingAnalysisById,
+  makeSelectAnalyzeButtonDisabled,
+  makeSelectNewPropertyAnalysisPageReady,
 };

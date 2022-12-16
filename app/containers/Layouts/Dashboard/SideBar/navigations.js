@@ -1,12 +1,17 @@
 export const navigations = [
   {
-    label: 'overview',
-    path: '/overview',
-    icon: 'home',
+    label: 'fixAndFlip',
+    path: '/fixandflip',
+    icon: 'add_home',
   },
   {
-    label: 'analysis',
-    path: '/analysis',
-    icon: 'equalizer',
+    label: 'rentalProperty',
+    path: '/rentalproperty',
+    icon: 'home_work',
+  },
+  {
+    label: 'propertyWholesaling',
+    path: '/propertywholesaling',
+    icon: 'add_home_work',
   },
 ];

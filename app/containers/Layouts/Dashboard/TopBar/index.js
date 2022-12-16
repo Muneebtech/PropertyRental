@@ -1,18 +1,10 @@
-/* eslint-disable react/no-array-index-key */
+/* eslint-disable react/no-array-index-key,no-unused-vars */
 import React, { memo } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import Menu from 'components/Menu';
-import {
-  MenuItem,
-  IconButton,
-  Icon,
-  Grid,
-  Typography,
-} from '@material-ui/core';
+import { MenuItem, Grid, FormControl, Select } from '@material-ui/core';
 import { logOut } from 'containers/Authentication/actions';
-import { FormattedMessage } from 'react-intl';
 import { isMdScreen } from 'utils/isMdScreen';
 import { classList } from 'utils/classList';
 import { createStructuredSelector } from 'reselect';
@@ -20,9 +12,10 @@ import {
   makeSelectUser,
   makeSelectAuthenticated,
 } from 'containers/Authentication/selectors';
-import messages from '../messages';
+import { changeLocale } from 'containers/LanguageProvider/actions';
+import { makeSelectLocale } from 'containers/LanguageProvider/selectors';
+import { useInjectReducer } from 'utils/injectReducer';
 import reducer from '../reducer';
-import { useInjectReducer } from '../../../../utils/injectReducer';
 
 // eslint-disable-next-line no-unused-vars
 const useStyles = makeStyles(theme => ({
@@ -41,6 +34,18 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     display: 'flex',
   },
+  langSelectControl: {
+    marginTop: '14px',
+  },
+  langSelect: {
+    textTransform: 'uppercase',
+    fontSize: '13px',
+    fontWeight: '700',
+    color: '#31342B',
+    '& svg': {
+      display: 'none',
+    },
+  },
 }));
 
 export function TopBar(props) {
@@ -52,6 +57,11 @@ export function TopBar(props) {
     props.logOut(props.push);
   };
 
+  const language = [{ name: 'en' }, { name: 'pt' }];
+
+  const handleChange = event => {
+    props.changeLocale(event.target.value);
+  };
   const handleSidebarToggle = () => {
     let mode;
     if (isMdScreen()) {
@@ -70,7 +80,34 @@ export function TopBar(props) {
           [classes.fixed]: true,
         })}
       >
-        <Grid container alignContent="space-between" alignItems="center">
+        <Grid
+          item
+          container
+          className="mt-5"
+          spacing={4}
+          justifyContent="flex-end"
+        >
+          <Grid item container justifyContent="flex-end" xs={3}>
+            <Grid item>
+              <FormControl className={classes.langSelectControl}>
+                <Select
+                  name="type"
+                  defaultValue={props.language}
+                  onChange={handleChange}
+                  disableUnderline
+                  className={classes.langSelect}
+                >
+                  {language.map(value => (
+                    <MenuItem key={value} value={value.name}>
+                      {value.name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Grid>
+          </Grid>
+        </Grid>
+        {/*   <Grid container alignContent="space-between" alignItems="center">
           <Grid item>
             <IconButton onClick={handleSidebarToggle} className="hide-on-lg">
               <Icon>menu</Icon>
@@ -126,7 +163,7 @@ export function TopBar(props) {
               </Menu>
             </Grid>
           </Grid>
-        </Grid>
+        </Grid> */}
       </div>
     </div>
   );
@@ -135,11 +172,13 @@ export function TopBar(props) {
 const mapStateToProps = createStructuredSelector({
   user: makeSelectUser(),
   authenticated: makeSelectAuthenticated(),
+  language: makeSelectLocale(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     logOut: push => dispatch(logOut(push)),
+    changeLocale: input => dispatch(changeLocale(input)),
     dispatch,
   };
 }

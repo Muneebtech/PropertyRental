@@ -10,6 +10,7 @@ import { getUserDetails } from 'containers/Authentication/actions';
 import Scrollbar from 'react-perfect-scrollbar';
 import { classList } from 'utils/classList';
 import { isMdScreen } from 'utils/isMdScreen';
+import scriptLoader from 'react-async-script-loader';
 import TopBar from './TopBar';
 import SideBar from './SideBar';
 import Footer from './Footer';
@@ -79,7 +80,9 @@ class Dashboard extends Component {
           />
           <Scrollbar className="scrollable-content">
             <div className="content">
-              <div className="m-sm-30">{this.props.children}</div>
+              <div className="p-sm-30" style={{ background: '#E9F2FB' }}>
+                {this.props.children}
+              </div>
             </div>
             <div className="my-auto" />
             <Footer />
@@ -110,14 +113,6 @@ const withConnect = connect(
 );
 
 export default compose(
-  withConnect,
-  memo,
-  injectIntl,
-)(Dashboard);
-
-/*
-TODO
-export default compose(
   scriptLoader([
     'https://js.stripe.com/v3/',
     `https://maps.googleapis.com/maps/api/js?v=3.44&key=${
@@ -128,4 +123,3 @@ export default compose(
   memo,
   injectIntl,
 )(Dashboard);
-*/

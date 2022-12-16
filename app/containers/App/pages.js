@@ -5,6 +5,7 @@ import Settings from 'containers/Pages/Settings';
 import Account from 'containers/Pages/Account';
 import Register from 'containers/Pages/Register';
 import Simple from 'containers/Layouts/Simple';
+import FixAndFlip from 'containers/Pages/FixAndFlip';
 import Analysis from 'containers/Pages/Analysis';
 
 export const pages = [
@@ -38,9 +39,16 @@ export const pages = [
         restricted: false,
       },
       {
-        path: '/analysis',
-        component: Analysis,
+        path: '/fixandflip',
+        component: FixAndFlip,
         exact: true,
+        private: false,
+        restricted: false,
+      },
+      {
+        path: '/analysis/*',
+        component: Analysis,
+        exact: false,
         private: false,
         restricted: false,
       },

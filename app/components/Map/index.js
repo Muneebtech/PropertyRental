@@ -6,10 +6,11 @@ const Map = ({
   isVendorScriptsLoaded,
   isGettingBoundaries,
   center,
-  location,
+  propertyLocation,
   errorGettingBoundaries,
+  disabled,
   boundaries,
-  setLocation,
+  setPropertyLocation,
 }) => (
   <>
     {!isVendorScriptsLoaded && (
@@ -45,9 +46,10 @@ const Map = ({
             {!isGettingBoundaries && (
               <MapComponent
                 center={center}
-                location={location}
+                disabled={disabled}
+                propertyLocation={propertyLocation}
                 boundaries={boundaries}
-                setLocation={setLocation}
+                setPropertyLocation={setPropertyLocation}
                 isLoaded={!isGettingBoundaries}
               />
             )}

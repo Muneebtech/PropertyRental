@@ -35,6 +35,18 @@ export default defineMessages({
     id: `${scope}.analysis`,
     defaultMessage: 'Analysis',
   },
+  fixAndFlip: {
+    id: `${scope}.fixAndFlip`,
+    defaultMessage: 'Fix And Flip',
+  },
+  propertyWholesaling: {
+    id: `${scope}.propertyWholesaling`,
+    defaultMessage: 'Property Wholesaling (Soon)',
+  },
+  rentalProperty: {
+    id: `${scope}.rentalProperty`,
+    defaultMessage: 'Rental Property (Soon)',
+  },
   administration: {
     id: `${scope}.administration`,
     defaultMessage: 'Administration',
@@ -45,7 +57,7 @@ export default defineMessages({
   },
   website: {
     id: `${scope}.website`,
-    defaultMessage: 'Real Estate Analytics',
+    defaultMessage: 'Revalue',
   },
   copyright: {
     id: `${scope}.copyright`,
@@ -53,6 +65,6 @@ export default defineMessages({
   },
   brand: {
     id: `${scope}.brand`,
-    defaultMessage: 'Real Estate Analytics',
+    defaultMessage: 'Revalue',
   },
 });

@@ -12,10 +12,17 @@ import transparentIcon from './transparent.png';
 import config from './config';
 
 class MapBoundaries {
-  constructor(map, boundaries, location, setLocation) {
+  constructor(
+    map,
+    boundaries,
+    propertyLocation,
+    setPropertyLocation,
+    disabled,
+  ) {
     this.map = map;
+    this.disabled = disabled;
     this.boundaries = boundaries;
-    this.setLocation = setLocation;
+    this.setPropertyLocation = setPropertyLocation;
     this.mouseoverEvent = null;
     this.mouseoutEvent = null;
 
@@ -94,7 +101,7 @@ class MapBoundaries {
   }
 
   addEventListeners() {
-    if (this.map && this.map.data) {
+    if (this.map && this.map.data && !this.map.disabled) {
       this.mouseoverEvent = this.map.data.addListener('mouseover', e =>
         this.changeStyle(e),
       );
@@ -189,7 +196,7 @@ class MapBoundaries {
       return;
     }
 
-    this.setLocation(feature.getProperty('fullName'));
+    this.setPropertyLocation(feature.getProperty('fullName'));
     this.hideMarker();
   }
 
