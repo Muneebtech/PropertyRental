@@ -1,0 +1,386 @@
+@import "../../../scss/variable";
+@import "../../../scss/mixins";
+.dashboard {
+  @include respond(tab-port) {
+    overflow: hidden;
+  }
+  &-left {
+    background-color: #1a2434;
+    height: 100vh;
+    position: absolute;
+  }
+  &-right {
+    margin-left: 45px;
+  }
+}
+
+.card-section {
+  background-color: $white;
+  margin: 3.5rem 2rem;
+  padding: 1rem;
+  border-radius: 0.8rem;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  align-items: center;
+  gap: 1rem;
+  @include respond(tab-port) {
+    grid-template-columns: auto auto;
+  }
+}
+
+.slider-section {
+  background-color: $white;
+  border-radius: 0.8rem;
+  margin: 0rem 2rem;
+
+  &-container {
+    display: flex;
+    @include respond(tab-port) {
+      flex-direction: column;
+    }
+  }
+  &-left {
+    width: 50%;
+    padding: 2rem;
+    @include respond(tab-port) {
+      width: 100%;
+    }
+    &-location {
+      & > img {
+        margin-right: 0.5rem;
+      }
+      & > h3 {
+        color: $light-gray;
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+    }
+    & > h4 {
+      font-size: 1.8rem;
+      margin: 1rem 0rem;
+      font-weight: 500;
+    }
+    &-property {
+      & > a {
+        text-decoration: underline;
+        font-weight: 500;
+        font-size: 1.2rem;
+        font-style: italic;
+        color: $primary;
+      }
+    }
+    &-area {
+      & > * {
+        &:not(:last-child) {
+          margin-right: 1rem;
+        }
+      }
+    }
+    & > p {
+      font-size: 1.2rem;
+      width: 70%;
+      margin: 1.5rem 0rem;
+    }
+    &-option {
+      display: flex;
+      align-items: center;
+    }
+  }
+  &-right {
+    width: 50%;
+    @include respond(tab-port) {
+      width: 100%;
+    }
+  }
+}
+
+.acqusition {
+  margin: 3rem 2rem;
+  @include respond(tab-port) {
+  }
+  &-container {
+    display: flex;
+    @include respond(tab-port) {
+      flex-direction: column;
+    }
+    &-left {
+      // padding: 1rem 0.5rem;
+      background-color: $white;
+      border-radius: 0.8rem;
+      padding: 2rem;
+      width: 50%;
+      margin-right: 2rem;
+      @include respond(tab-port) {
+        width: 92%;
+        margin-right: 0rem;
+      }
+
+      &-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      &-color {
+        & > * {
+          &:not(:last-child) {
+            margin-bottom: 1.5rem;
+          }
+        }
+      }
+      &-bar {
+        padding-right: 4rem;
+        & > img {
+          height: 15rem;
+        }
+        @include respond(tab-port) {
+          padding-right: 0rem;
+        }
+      }
+    }
+    &-right {
+      width: 50%;
+      padding: 2rem 1.5rem;
+      background-color: $white;
+      border-radius: 0.8rem;
+      @include respond(tab-port) {
+        width: 94%;
+        margin-top: 2rem;
+      }
+    }
+  }
+}
+
+.capital {
+  margin: 3rem 2rem;
+
+  &-container {
+    display: flex;
+    @include respond(tab-port) {
+      flex-direction: column;
+    }
+    &-left {
+      padding: 1rem 0.5rem;
+      background-color: $white;
+      border-radius: 0.8rem;
+      padding: 2rem;
+      width: 50%;
+      margin-right: 2rem;
+      @include respond(tab-port) {
+        width: 93%;
+      }
+    }
+    &-right {
+      width: 50%;
+      padding: 2rem 1.5rem;
+      background-color: $white;
+      border-radius: 0.8rem;
+      & > img {
+        width: 100%;
+      }
+      @include respond(tab-port) {
+        margin-top: 2rem;
+        width: 95%;
+      }
+    }
+  }
+}
+
+.transtional-price {
+  margin: 2rem 2rem;
+  & > img {
+    width: 100%;
+  }
+}
+
+.table {
+  @include respond(tab-port) {
+    width: 100%;
+    overflow-x: scroll;
+  }
+  &-container {
+    display: flex;
+    margin: 2rem 2rem;
+    flex-direction: column;
+    gap: 30px;
+
+    &-content {
+      margin: 1rem 0rem;
+
+      & > table {
+        width: 100%;
+        text-align: left;
+        border: 1px solid $border;
+        border-radius: 0.8rem;
+        border-collapse: collapse;
+        @include respond(tab-port) {
+          width: 130%;
+        }
+        & > thead {
+          & > tr {
+            & > th {
+              padding: 1.5rem 1.8rem;
+              background-color: $table-heading;
+              border-collapse: collapse;
+              font-size: 1.2rem;
+              font-weight: 500;
+              &:first-of-type {
+                & > div {
+                  // background-color: red;
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+
+                  & > span {
+                    font-weight: 500;
+                  }
+                }
+                width: 23rem;
+                background-color: transparent;
+                align-items: center;
+              }
+            }
+          }
+        }
+        & > tbody {
+          background-color: $white;
+          & > tr {
+            & > td {
+              padding: 1.5rem 1.8rem;
+              font-weight: 400;
+              font-size: 1.1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.total-table_style {
+  // margin-top: -.5rem;
+  // margin-left: -.5rem;
+  // margin: -0.5rem;
+  & > table {
+    border-collapse: collapse;
+    width: 100%;
+    @include respond(tab-port) {
+      width: 130%;
+    }
+    & > tbody {
+      background-color: white;
+      border: 1px solid $border;
+      & > tr {
+        & > td {
+          padding: 1.5rem 1.8rem;
+
+          border-collapse: collapse;
+          font-size: 1.2rem;
+          font-weight: 500;
+          color: $primary;
+          &:first-of-type {
+            & > div {
+              background-color: $red;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+
+              & > span {
+                font-weight: 500;
+              }
+            }
+            width: 23rem;
+            background-color: transparent;
+            align-items: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ///////////
+.divider {
+  border-bottom: 1px solid $border;
+  margin: 1.5rem 0rem;
+}
+
+///////////////
+.area {
+  &-container {
+    & > img {
+      margin-right: 1rem;
+    }
+    &-headings {
+      & > h2 {
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+      & > * {
+        &:not(:last-child) {
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+  }
+}
+///////////
+/// Check
+
+.check {
+  & > h3 {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  & > * {
+    &:not(:first-child) {
+      color: $primary;
+      margin-left: 0.5rem;
+      background-color: $background;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+    }
+  }
+}
+
+///////////
+/// Acquistion
+.acquistion-flex {
+  & > img {
+    margin-right: 1rem;
+  }
+  & > h4 {
+    font-size: 1.1rem;
+    font-weight: 400;
+  }
+}
+////////////
+/// Investment
+
+.investment {
+  & > h5 {
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+  & > h3 {
+    font-size: 1.4rem;
+    font-weight: 500;
+  }
+}
+
+////////////
+/// Capital Source
+
+.capital_source {
+  margin-bottom: 1.5rem;
+  & > h5 {
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+}
+.capital_heading {
+  margin-bottom: 1.2rem;
+  & > h1 {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+}

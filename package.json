@@ -69,6 +69,7 @@
     "@material-ui/styles": "^4.0.0",
     "@stripe/react-stripe-js": "^1.2.0",
     "@stripe/stripe-js": "^1.11.0",
+    "antd": "^5.1.0",
     "autosuggest-highlight": "^3.1.1",
     "axios": "^0.24.0",
     "chalk": "^2.4.2",

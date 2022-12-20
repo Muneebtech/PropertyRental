@@ -1,0 +1,30 @@
+@import "../../scss/variable";
+@import "../../scss/mixins";
+.card_main {
+  width: 100%;
+  margin-top: 0.5rem;
+
+  &-container {
+    padding-left: 1.5rem;
+    &-flex {
+      display: flex;
+      align-items: center;
+      margin-top: 1rem;
+      & > p {
+        margin-right: 2rem;
+      }
+    }
+    & > h4 {
+      margin-top: 1rem;
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.card_main-border {
+  border-left: 1.5px solid $border;
+  @include respond(tab-port) {
+    border: none;
+  }
+}
